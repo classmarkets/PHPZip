@@ -1,13 +1,16 @@
 <?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 // Example. Zip all .html files in the current directory and send the file for Download.
 // Also adds a static text "Hello World!" to the file Hello.txt
+
 $fileDir = './';
 ob_start(); // This is only to show that ob_start can be called, however the buffer must be empty when sending.
 
-include_once("Zip.php");
 $fileTime = date("D, d M Y H:i:s T");
 
-$zip = new Zip();
+$zip = new Grandt\Zip();
 // Archive comments don't really support utf-8. Some tools detect and read it though.
 $zip->setComment("Example Zip file.\nАрхив Комментарий\nCreated on " . date('l jS \of F Y h:i:s A'));
 // A bit of russian (I hope), to test UTF-8 file names.
@@ -36,4 +39,3 @@ if ($handle) {
 //$zip->sendZip("ZipExample1.zip");
 //$zip->sendZip("ZipExample1_€2,000.zip");
 $zip->sendZip("ZipExample1_€2,000.zip", "application/zip", "ZipExample1_€2,000_utf8.zip");
-?>

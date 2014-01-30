@@ -1,12 +1,14 @@
 <?php
+
+require __DIR__ . '/vendor/autoload.php';
+
 // Example. Zip all .html files in the current directory and save to current directory.
 // Make a copy, also to the current dir, for good measure.
 $fileDir = './';
 
-include_once("Zip.php");
 $fileTime = date("D, d M Y H:i:s T");
 
-$zip = new Zip();
+$zip = new Grandt\Zip();
 $zip->setZipFile("ZipExample.zip");
 
 $zip->setComment("Example Zip file.\nCreated on " . date('l jS \of F Y h:i:s A'));

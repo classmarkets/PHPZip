@@ -1,18 +1,6 @@
 <?php
-error_reporting(E_ALL | E_STRICT);
-ini_set('error_reporting', E_ALL | E_STRICT);
-ini_set('display_errors', 1);
-//
-//// Example. Zip all .html files in the current directory and save to current directory.
-// Make a copy, also to the current dir, for good measure.
-//$mem = ini_get('memory_limit');
-$extime = ini_get('max_execution_time');
-//
-////ini_set('memory_limit', '512M');
-ini_set('max_execution_time', 600);
 
-include_once("ZipStream.php");
-//print_r(ini_get_all());
+require __DIR__ . '/vendor/autoload.php';
 
 $fileTime = date("D, d M Y H:i:s T");
 
@@ -20,7 +8,7 @@ $chapter1 = "Chapter 1\n"
 . "Lorem ipsum\n"
 . "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna lorem, mattis sit amet porta vitae, consectetur ut eros. Nullam id mattis lacus. In eget neque magna, congue imperdiet nulla. Aenean erat lacus, imperdiet a adipiscing non, dignissim eget felis. Nulla facilisi. Vivamus sit amet lorem eget mauris dictum pharetra. In mauris nulla, placerat a accumsan ac, mollis sit amet ligula. Donec eget facilisis dui. Cras elit quam, imperdiet at malesuada vitae, luctus id orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Pellentesque eu libero in leo ultrices tristique. Etiam quis ornare massa. Donec in velit leo. Sed eu ante tortor.\n";
 
-$zip = new ZipStream("ZipStreamExample1.zip");
+$zip = new Grandt\ZipStream("ZipStreamExample1.zip");
 
 $zip->setComment("Example Zip file for Large file sets.\nCreated on " . date('l jS \of F Y h:i:s A'));
 $zip->addFile("Hello World!\r\n", "Hello.txt");
@@ -65,4 +53,3 @@ $zip->addDirectoryContent("../test", "recursiveDir/testPermisssions", TRUE, TRUE
 			TRUE, ZipStream::generateExtAttr(4, 4, 0, FALSE), ZipStream::generateExtAttr(4, 4, 0, TRUE));
 */
 $zip->finalize(); // Mandatory, needed to send the Zip files central directory structure.
-?>
