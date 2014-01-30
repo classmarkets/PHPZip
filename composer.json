@@ -1,0 +1,11 @@
+{
+    "name": "grandt/phpzip",
+    "license": "LGPL-3.0",
+    "description": "A pair of PHP classes to generate zip files.",
+    "require": {
+    },
+    "autoload": {
+      "psr-0": { "Grandt": "" }
+    },
+    "target-dir": "Grandt"
+}

@@ -1,4 +1,7 @@
 <?php
+
+namespace Grandt;
+
 /**
  * Class to create and manage a Zip file.
  *
